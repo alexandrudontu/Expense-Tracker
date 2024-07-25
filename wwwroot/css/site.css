@@ -198,6 +198,10 @@ nav.navbar {
             transform: scale(1.05) translateZ(0px);
         }
 
+nav.navbar {
+    margin-left: 290px;
+}
+
 /*Profile Pic*/
 img.profile-pic {
     width: 45px;

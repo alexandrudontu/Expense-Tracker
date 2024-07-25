@@ -8,16 +8,40 @@ namespace Expense_Tracker.Models
         [Key]
         public int TransactionId { get; set; }
 
-        [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a category.")]
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
 
+        [Range(1, int.MaxValue, ErrorMessage = "Amount should be greater than 0.")]
         public int Amount { get; set; }
 
         public string? Note { get; set; }
 
-        public DateTime Date {  get; set; } = DateTime.Now;
+        private DateTime _date = DateTime.UtcNow;
+
+        public DateTime Date
+        {
+            get => _date;
+            set => _date = DateTime.SpecifyKind(value, DateTimeKind.Utc);
+        }
+
+        [NotMapped]
+        public string? CategoryTitleWithIcon { 
+            get
+            {
+                return Category == null ? "" : Category.Icon + " " + Category.Title;
+            }
+        }
+
+        [NotMapped]
+        public string? FormattedAmount
+        {
+            get
+            {
+                return ((Category == null || Category.Type == "Expense" )? "- " : "+ ") + Amount.ToString("c0");
+            }
+        }
     }
 }

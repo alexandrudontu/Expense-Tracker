@@ -21,9 +21,8 @@ namespace Expense_Tracker.Controllers
         // GET: Category
         public async Task<IActionResult> Index()
         {
-              return _context.Categories != null ? 
-                          View(await _context.Categories.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Categories'  is null.");
+              return _context.Categories != null ? View(await _context.Categories.ToListAsync()) :
+              Problem("Entity set 'ApplicationDbContext.Categories'  is null.");
         }
 
         // GET: Category/AddOrEdit

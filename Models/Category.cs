@@ -8,11 +8,14 @@ namespace Expense_Tracker.Models
         [Key]
         public int CategoryId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Title is required.")] 
+        [MaxLength(50)]
         public string Title { get; set; }
-
+        
+        [MaxLength(5)]
         public string Icon { get; set; } = "";
-
+        
+        [MaxLength(10)]
         public string Type { get; set; } = "Expense";
 
         [NotMapped]

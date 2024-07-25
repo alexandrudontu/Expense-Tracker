@@ -22,7 +22,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.17" />
     <PackageReference Include="Npgsql" Version="6.0.3" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.3" />
-    <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="26.1.42" />
+    <PackageReference Include="ServiceStack.Text" Version="8.3.0" />
+    <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="26.1.35" />
   </ItemGroup>
 
 </Project>

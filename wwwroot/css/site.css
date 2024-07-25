@@ -180,8 +180,6 @@ body {
             margin-top: 35px;
         }
 
-
-
 /*Navbar*/
 nav.navbar {
     background-color: rgba(18, 22, 29);
@@ -199,10 +197,6 @@ nav.navbar {
             background-color: #48545f14;
             transform: scale(1.05) translateZ(0px);
         }
-
-nav.navbar {
-    margin-left: 290px;
-}
 
 /*Profile Pic*/
 img.profile-pic {

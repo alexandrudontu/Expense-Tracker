@@ -3,6 +3,7 @@ using Expense_Tracker.Repositories;
 using Expense_Tracker.Repositories.Interfaces;
 using Expense_Tracker.Services;
 using Expense_Tracker.Services.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,10 +15,20 @@ ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 // Dependency Injection
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireUppercase = false;
+});
+
 
 // Register repositories and services
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -41,5 +52,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+app.MapRazorPages();
 
 app.Run();
